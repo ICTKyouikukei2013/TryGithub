@@ -37,6 +37,7 @@ if __name__ == "__main__":
 	# TODO:
 	# コマンドラインから引数２つを取得してnumberへ保存
 	# 応用：メソッドにする
+    number = sys.argv
 
 	# 引数の数
 	length = len(number)
