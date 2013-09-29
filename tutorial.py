@@ -10,19 +10,28 @@ import sys
 # TODO:
 # 引数２つを受け取って、足し算して返す
 # addメソッドを作成
+def add(x, y):
+    return x+y
 
 # TODO:
 # 引数２つを受け取って、引き算して返す
 # minusメソッドを作成
+def minus(x, y):
+    return x-y
 
 # TODO:
 # 引数２つを受け取って、掛け算して返す
 # multiplyメソッドを作成
-
+def multiply(x, y):
+    return x*y
 # TODO:
 # 引数２つを受け取って、割り算して返す
 # devideメソッドを作成
-
+def devide(x, y):
+    if y!=0:
+        return x/y
+    else:
+        print "ゼロでは割れません"
 
 if __name__ == "__main__":
 	# TODO:
