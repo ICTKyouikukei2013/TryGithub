@@ -40,15 +40,15 @@ if __name__ == "__main__":
     number = sys.argv
 
 	# 引数の数
-	length = len(number)
+    length = len(number)
 	# 引数を取得したものが足りなかったらエラーを吐いてプログラム終了
-	if length < 3
-		print '引数が %d 個少ないです。' % (3 - length)
-		quit()
+    if length < 3:
+        print '引数が %d 個少ないです。' % (3 - length)
+        quit()
 
-	if lenght > 3
-		print '引数が %d 個多いです。' % (length - 3)
-		quit()
+    if length > 3:
+        print '引数が %d 個多いです。' % (length - 3)
+        quit()
 
 	# TODO:
 	# 最初の引数を使ってFizzBuzz問題を解こう！
