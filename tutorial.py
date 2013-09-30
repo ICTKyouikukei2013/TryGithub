@@ -10,6 +10,8 @@ import sys
 # TODO:
 # 引数２つを受け取って、足し算して返す
 # addメソッドを作成
+def add(a, b):
+	return a + b
 
 # TODO:
 # 引数２つを受け取って、引き算して返す
