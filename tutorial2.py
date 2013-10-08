@@ -1,15 +1,27 @@
 #coding: utf-8
 
-import sys
+import sys, random, datetime
 
 from flask import Flask
 app = Flask(__name__)
 
-#@app.route("/")
-#def hello():
-#    return "Hello World!"
+@app.route("/<name>")
+def root(name):
+  l = [hello, konnichiha, date]
+  return random.choice(l)(name)
+
+def hello(name):
+  return "Hello, %s!" % name
+
+def konnichiha(name):
+  return u"こんにちは、%s。" % name
+
+def date(name):
+  d = datetime.datetime.today()
+  return u"%sさん、今日の日付は%s/%s/%sです。" % (name, d.year, d.month, d.day)
 
 if __name__ == "__main__":
+    app.debug = True
     app.run()
 
 # http://flask.pocoo.org/
