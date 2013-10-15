@@ -1,13 +1,22 @@
 #coding: utf-8
 
 import sys
+import random
+import datetime
 
 from flask import Flask
 app = Flask(__name__)
 
-#@app.route("/")
-#def hello():
-#    return "Hello World!"
+@app.route("/yuto")
+def hello():
+    d = datetime.datetime.today()
+    a=random.randint(1,3)
+    if a==1:
+        return "Hello, yuto！"
+    if a==2:
+        return "こんにちは、yuto。"
+    if a==3:
+        return "yutoさん、今日の日付は｢%s/%s/%s｣です。" % (d.year, d.month, d.day)
 
 if __name__ == "__main__":
     app.run()
