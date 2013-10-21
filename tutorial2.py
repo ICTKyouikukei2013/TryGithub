@@ -2,6 +2,7 @@
 
 import sys
 import datetime
+import random
 
 from flask import Flask
 app = Flask(__name__)
@@ -18,17 +19,32 @@ app = Flask(__name__)
 
 日本語を含んだ文字列はASCⅡの文字コードと認識されるらしく、そのままusernameをぶち込むとエラーが起きるので、文字列の最初にuをつけて文字コードがutf-8だと認識させる
  u"~~~"
+
+ 神谷先生のコードレビュー
+ *マジックナンバーは使わない
+ *そのためにreternする文を関数にする
+ *そうすると文の追加や編集がしやすくなる
+ *追加した関数を配列にする
+ *random.choiceの引数に関数の配列を与えて、その中からランダムに返す
+ *その値を変数に代入してその変数を実行する
+ →マジックナンバーが使われず、文の追加の方法も分かりやすく簡単になった。
 """
+def hello1(username):
+	return 'Hello, %s!' % username
+
+def hello2(username):
+	return u'こんにちは、%s。' % username
+
+def hello3(username):
+	now = datetime.datetime.now()
+	return u'%sさん、今日の日付は%sです。' % (username, now.strftime('%Y/%m/%d'))
+
+hello_func = [hello1, hello2, hello3]
+
 @app.route('/<username>')
 def show_username(username):
-	now = datetime.datetime.now()
-	random = (int)(now.microsecond) % 3
-	if(random == 0):
-		return 'Hello, %s!' % username
-	elif(random == 1):
-		return u'こんにちは、%s。' % username
-	else:
-		return u'%sさん、今日の日付は%sです。' % (username, now.strftime('%Y/%m/%d'))
+	hello = random.choice(hello_func)
+	return hello(username)
 
 """
 if __name__ == "__main__":
@@ -39,7 +55,7 @@ if __name__ == "__main__":
 app.runn()にdebug=Trueを渡すとエラーが出た時にどのへんがダメなのか教えてくれる
 """
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 # http://flask.pocoo.org/
 # このドキュメントを読んで勉強しつつ、
